@@ -1,0 +1,155 @@
+asyncapi: 3.0.0
+info:
+  title: Smart Thermostat Telemetry (MQTT)
+  version: 1.0.0
+  description: >-
+    Example AsyncAPI 3.0 document describing IoT thermostat telemetry over
+    MQTT 5.0. Demonstrates parameterized channel addresses, MQTT server /
+    operation / message bindings (QoS, retain), and last-will configuration.
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+
+defaultContentType: application/json
+
+servers:
+  hivemq:
+    host: broker.example.com:8883
+    protocol: secure-mqtt
+    protocolVersion: '5.0.0'
+    description: Production MQTT 5 broker (TLS, port 8883)
+    security:
+      - $ref: '#/components/securitySchemes/clientCert'
+    bindings:
+      mqtt:
+        clientId: telemetry-{deviceId}
+        cleanSession: false
+        keepAlive: 60
+        lastWill:
+          topic: devices/{deviceId}/status
+          qos: 1
+          message: '{"state":"offline"}'
+          retain: true
+
+channels:
+  thermostatReading:
+    address: devices/{deviceId}/telemetry
+    title: Thermostat Reading
+    description: Periodic temperature / humidity / setpoint telemetry per device.
+    parameters:
+      deviceId:
+        description: Unique MAC-derived device identifier
+    messages:
+      reading:
+        $ref: '#/components/messages/ThermostatReading'
+    bindings:
+      mqtt:
+        # Channel-level MQTT binding placeholder
+
+  thermostatCommand:
+    address: devices/{deviceId}/commands/setpoint
+    title: Thermostat Setpoint Command
+    description: Cloud-to-device command setting the target temperature.
+    parameters:
+      deviceId:
+        description: Unique device identifier (matches telemetry deviceId)
+    messages:
+      setpoint:
+        $ref: '#/components/messages/SetpointCommand'
+
+operations:
+  publishReading:
+    action: send
+    channel:
+      $ref: '#/channels/thermostatReading'
+    summary: Publish a thermostat reading
+    description: Device-side. Published every 30 seconds (configurable).
+    bindings:
+      mqtt:
+        qos: 0
+        retain: false
+    messages:
+      - $ref: '#/channels/thermostatReading/messages/reading'
+
+  receiveSetpoint:
+    action: receive
+    channel:
+      $ref: '#/channels/thermostatCommand'
+    summary: Receive a setpoint command
+    description: Device subscribes at QoS 1 to ensure delivery of every command.
+    bindings:
+      mqtt:
+        qos: 1
+    messages:
+      - $ref: '#/channels/thermostatCommand/messages/setpoint'
+
+components:
+  messages:
+    ThermostatReading:
+      name: ThermostatReading
+      title: Thermostat Reading
+      contentType: application/json
+      headers:
+        type: object
+        properties:
+          firmwareVersion:
+            type: string
+      payload:
+        type: object
+        required: [timestamp, temperatureC]
+        properties:
+          timestamp:
+            type: string
+            format: date-time
+          temperatureC:
+            type: number
+            minimum: -40
+            maximum: 85
+          humidityPct:
+            type: number
+            minimum: 0
+            maximum: 100
+          setpointC:
+            type: number
+          batteryPct:
+            type: integer
+            minimum: 0
+            maximum: 100
+      bindings:
+        mqtt:
+          payloadFormatIndicator: 1
+          contentType: application/json
+      examples:
+        - name: livingRoomReading
+          payload:
+            timestamp: '2026-05-22T14:03:12Z'
+            temperatureC: 21.4
+            humidityPct: 42.1
+            setpointC: 22.0
+            batteryPct: 87
+
+    SetpointCommand:
+      name: SetpointCommand
+      title: Setpoint Command
+      contentType: application/json
+      correlationId:
+        location: $message.header#/correlationId
+      payload:
+        type: object
+        required: [setpointC]
+        properties:
+          correlationId:
+            type: string
+            format: uuid
+          setpointC:
+            type: number
+            minimum: 10
+            maximum: 32
+          requestedBy:
+            type: string
+            description: User id or automation rule id
+
+  securitySchemes:
+    clientCert:
+      type: X509
+      description: Mutual TLS using a device-issued X.509 certificate.

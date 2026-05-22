@@ -1,0 +1,359 @@
+aid: async-apis
+name: AsyncAPI Vocabulary
+description: >-
+  Normative vocabulary for the AsyncAPI Specification (versions 2.x and 3.x).
+  Covers the core object types (document, info, server, channel, operation,
+  message, binding, parameter, trait), protocol bindings (Kafka, MQTT, AMQP,
+  WebSocket, NATS, SNS, SQS, JMS, Pulsar, IBM MQ, Google Pub/Sub, HTTP,
+  ROS 2), and the broader event-driven ecosystem (CloudEvents, schema
+  registries, broker patterns).
+modified: '2026-05-22'
+
+terms:
+
+  - term: AsyncAPI Document
+    definition: >-
+      A YAML or JSON document conforming to the AsyncAPI Specification. The
+      root object contains `asyncapi` (version), `info`, `servers`, `channels`,
+      `operations`, and `components`. The machine-readable contract for an
+      event-driven or message-driven application.
+    tags:
+      - Core
+      - Document
+
+  - term: Channel
+    definition: >-
+      An addressable component of the messaging system over which messages
+      flow. Concretely: a Kafka topic, an MQTT topic filter, an AMQP exchange
+      or queue, a WebSocket path, a NATS subject, an SNS topic ARN, an SQS
+      queue URL, a JMS destination. Defined under the document's `channels`
+      map; referenced from operations.
+    tags:
+      - Core
+      - Channel
+
+  - term: Operation
+    definition: >-
+      A send or receive action an application performs on a referenced channel.
+      First-class top-level object in AsyncAPI 3.0+. The `action` field is
+      either `send` (application produces messages to the channel) or
+      `receive` (application consumes messages). Operations reference channels
+      via `$ref`; this separation lets the same channel be re-used by multiple
+      operations.
+    tags:
+      - Core
+      - Operation
+      - AsyncAPI 3.0
+
+  - term: Message
+    definition: >-
+      A data unit flowing over a channel. Defined by `headers`, `payload`,
+      `contentType`, `schemaFormat`, `correlationId`, examples, traits, and
+      protocol-specific bindings. Messages are defined inside a channel's
+      `messages` map (or in `components.messages`) and referenced from
+      operations.
+    tags:
+      - Core
+      - Message
+
+  - term: Server
+    definition: >-
+      A broker or endpoint the application connects to. Defined by `host`,
+      `pathname`, `protocol`, `protocolVersion`, optional `variables`, and
+      optional protocol-specific server bindings. The `protocol` field
+      determines which binding namespace applies.
+    tags:
+      - Core
+      - Server
+      - Broker
+
+  - term: Binding
+    definition: >-
+      A protocol-specific definition applied at the server, channel, operation,
+      or message level. Examples: `kafka.groupId` on an operation, `mqtt.qos`
+      on an operation, `amqp.routingKey` on a channel, `kafka.key` on a
+      message. Each protocol has its own binding spec versioned independently.
+    tags:
+      - Bindings
+      - Protocol
+
+  - term: Parameter
+    definition: >-
+      A variable used in a channel address template, e.g. `user/{userId}/signup`.
+      Parameters can have an enum, default, examples, and a description.
+      Parameter values get resolved at message send/receive time.
+    tags:
+      - Core
+      - Parameter
+      - Channel
+
+  - term: Trait
+    definition: >-
+      A reusable fragment merged into a Message Object (`messageTrait`) or an
+      Operation Object (`operationTrait`). Traits enable DRY definitions of
+      common headers, bindings, or tags applied across many messages or
+      operations.
+    tags:
+      - Core
+      - Reuse
+
+  - term: Correlation ID
+    definition: >-
+      A runtime expression locating the value inside a message used to
+      correlate requests with replies. Example expression:
+      `$message.header#/correlationId`. Critical for request/reply patterns
+      over a message broker.
+    tags:
+      - Messaging Pattern
+      - Request Reply
+
+  - term: Reply
+    definition: >-
+      The reply side of a request/reply pattern, defined on an Operation via
+      the `reply` field. Specifies the reply channel and the message(s) used
+      for the reply. New in AsyncAPI 3.0.
+    tags:
+      - Messaging Pattern
+      - Request Reply
+      - AsyncAPI 3.0
+
+  - term: Components
+    definition: >-
+      A container for reusable definitions: schemas, messages, securitySchemes,
+      serverVariables, parameters, channels, operations, replies, replyAddresses,
+      externalDocs, tags, correlationIds, operationTraits, messageTraits,
+      serverBindings, channelBindings, operationBindings, messageBindings.
+      Items in `components` are referenced via `$ref`.
+    tags:
+      - Core
+      - Reuse
+
+  - term: Send Action
+    definition: >-
+      Operation `action: send` — the application produces messages onto the
+      referenced channel. Equivalent to a publisher / producer role in
+      pub/sub or messaging terminology.
+    tags:
+      - Operation
+      - Action
+
+  - term: Receive Action
+    definition: >-
+      Operation `action: receive` — the application consumes messages from
+      the referenced channel. Equivalent to a subscriber / consumer role in
+      pub/sub or messaging terminology.
+    tags:
+      - Operation
+      - Action
+
+  - term: Kafka Binding
+    definition: >-
+      Protocol binding for Apache Kafka. Channel binding adds `topic`,
+      `partitions`, `replicas`, `topicConfiguration`. Operation binding adds
+      `groupId`, `clientId`. Message binding adds `key`, `schemaIdLocation`,
+      `schemaIdPayloadEncoding`, `schemaLookupStrategy`.
+    tags:
+      - Bindings
+      - Kafka
+
+  - term: MQTT Binding
+    definition: >-
+      Protocol binding for MQTT 3.1.1 and 5.0. Server binding adds
+      `clientId`, `cleanSession`, `lastWill`, `keepAlive`. Operation binding
+      adds `qos` and `retain`. Message binding adds `payloadFormatIndicator`,
+      `correlationData`, `contentType`, `responseTopic`.
+    tags:
+      - Bindings
+      - MQTT
+      - IoT
+
+  - term: AMQP Binding
+    definition: >-
+      Protocol binding for AMQP 0.9.1 (RabbitMQ-style). Channel binding adds
+      `is` (queue|routingKey), `exchange` definition, `queue` definition.
+      Operation binding adds `expiration`, `userId`, `cc`, `priority`,
+      `deliveryMode`, `mandatory`, `bcc`, `timestamp`, `ack`.
+    tags:
+      - Bindings
+      - AMQP
+      - RabbitMQ
+
+  - term: WebSocket Binding
+    definition: >-
+      Protocol binding for WebSocket (RFC 6455). Channel binding adds
+      `method`, `query`, `headers` for the opening HTTP handshake.
+    tags:
+      - Bindings
+      - WebSocket
+
+  - term: NATS Binding
+    definition: >-
+      Protocol binding for NATS. Operation binding adds `queue` for queue
+      groups, supporting NATS subjects with wildcard tokens.
+    tags:
+      - Bindings
+      - NATS
+
+  - term: AWS SNS Binding
+    definition: >-
+      Protocol binding for Amazon Simple Notification Service. Channel
+      binding adds topic name, ordering, deduplication, policy, tags.
+      Operation binding adds subscription details.
+    tags:
+      - Bindings
+      - SNS
+      - AWS
+
+  - term: AWS SQS Binding
+    definition: >-
+      Protocol binding for Amazon Simple Queue Service. Channel binding
+      adds queue definition (standard or FIFO), redrive policy, deadletter
+      queue, content-based deduplication.
+    tags:
+      - Bindings
+      - SQS
+      - AWS
+
+  - term: AsyncAPI Studio
+    definition: >-
+      Official browser-based editor for designing AsyncAPI documents.
+      Live-validates via Parser, renders the React component preview,
+      and generates example messages.
+    tags:
+      - Tooling
+      - Editor
+
+  - term: AsyncAPI Parser
+    definition: >-
+      Reference parser/validator library for AsyncAPI documents.
+      JavaScript (`@asyncapi/parser`) and Go (`asyncapi/parser-go`)
+      implementations share the parser-api interface.
+    tags:
+      - Tooling
+      - Parser
+      - Validator
+
+  - term: Modelina
+    definition: >-
+      AsyncAPI library that generates strongly-typed model code (Java,
+      TypeScript, Go, C#, Rust, Python, Kotlin, Dart, PHP, C++) from
+      AsyncAPI, OpenAPI, JSON Schema, and Avro inputs.
+    tags:
+      - Tooling
+      - Code Generation
+
+  - term: AsyncAPI Generator
+    definition: >-
+      Template-driven generator. Pairs an AsyncAPI document with a
+      template (html, markdown, nodejs, java, python-paho, ts-nats) to
+      produce documentation or runnable client/server code.
+    tags:
+      - Tooling
+      - Code Generation
+      - Documentation
+
+  - term: AsyncAPI CLI
+    definition: >-
+      Unified command-line interface (`asyncapi`) providing `validate`,
+      `generate`, `optimize`, `convert` (2.x to 3.x), `new`, `bundle`,
+      and `start studio` commands.
+    tags:
+      - Tooling
+      - CLI
+
+  - term: Microcks
+    definition: >-
+      Open-source, CNCF Sandbox Kubernetes-native API mocking and
+      contract testing platform. Consumes AsyncAPI documents and stands
+      up live mock Kafka, MQTT, AMQP, WebSocket, NATS, SNS, SQS, Google
+      Pub/Sub, and IBM MQ endpoints replaying example messages from the
+      contract.
+    tags:
+      - Tooling
+      - Mocking
+      - Contract Testing
+      - CNCF
+
+  - term: Apicurio Registry
+    definition: >-
+      Open-source schema and API registry from Red Hat. Stores AsyncAPI,
+      OpenAPI, JSON Schema, Avro, Protobuf, GraphQL, and XML Schema
+      artifacts. Integrates with Kafka via SerDes libraries and enforces
+      compatibility rules on schema evolution.
+    tags:
+      - Tooling
+      - Schema Registry
+
+  - term: Springwolf
+    definition: >-
+      Spring Boot extension that auto-generates an AsyncAPI document from
+      annotated message listeners (`@KafkaListener`, `@RabbitListener`,
+      `@JmsListener`, `@SqsListener`, Cloud Stream bindings) and serves
+      an interactive Swagger-UI-like console.
+    tags:
+      - Tooling
+      - Code-First
+      - Spring Boot
+
+  - term: FastStream
+    definition: >-
+      Python framework that auto-generates AsyncAPI documentation from
+      typed message handlers for Kafka, RabbitMQ, NATS, Redis Pub/Sub,
+      and Confluent Kafka. Donated to the AsyncAPI community by airtai.
+    tags:
+      - Tooling
+      - Code-First
+      - Python
+
+  - term: Glee
+    definition: >-
+      Spec-first AsyncAPI application framework. Takes an AsyncAPI
+      document as input and scaffolds a Node.js server that handles the
+      channels, validates messages against the schema, and routes them
+      to user-supplied handler functions.
+    tags:
+      - Tooling
+      - Framework
+      - Application Server
+
+  - term: CloudEvents
+    definition: >-
+      A CNCF specification (separate from AsyncAPI) for a vendor-neutral
+      envelope describing event data. Commonly used as the message
+      payload format in AsyncAPI documents via
+      `contentType: application/cloudevents+json`.
+    tags:
+      - Related
+      - CloudEvents
+      - CNCF
+
+  - term: AsyncAPI Initiative
+    definition: >-
+      The open-source governance organization stewarding the
+      specification, parser, studio, modelina, generator, CLI, and
+      related repositories. Operates under the Linux Foundation as
+      "AsyncAPI Project a Series of LF Projects, LLC". Apache-2.0
+      licensed throughout.
+    tags:
+      - Governance
+      - Linux Foundation
+
+  - term: Specification Version 3.0
+    definition: >-
+      Major release in December 2023 introducing breaking changes — most
+      notably separating Operations from Channels into top-level objects,
+      adding Reply objects for request/reply patterns, splitting
+      addresses out of channel keys, and restructuring Message references.
+    tags:
+      - Version History
+      - AsyncAPI 3.0
+
+  - term: Specification Version 3.1
+    definition: >-
+      Minor release in January 2026 adding ROS 2 bindings to the
+      official specification, expanding AsyncAPI coverage from typical
+      enterprise message brokers into robotics middleware.
+    tags:
+      - Version History
+      - AsyncAPI 3.1
+      - ROS 2

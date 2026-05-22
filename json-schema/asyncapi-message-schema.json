@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/async-apis/refs/heads/main/json-schema/asyncapi-message-schema.json",
+  "title": "AsyncAPI Message",
+  "description": "An AsyncAPI Message — describes the data flowing over a channel: headers, payload, content type, correlation id, examples, and protocol-specific message bindings.",
+  "type": "object",
+  "properties": {
+    "messageId": {
+      "type": "string",
+      "description": "Unique identifier for the message inside the document. Required when referenced from outside an inline definition."
+    },
+    "name": {
+      "type": "string",
+      "description": "Machine-friendly name of the message. Used in code generation."
+    },
+    "title": {
+      "type": "string",
+      "description": "Human-readable title."
+    },
+    "summary": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "contentType": {
+      "type": "string",
+      "description": "MIME type of the payload. Overrides defaultContentType.",
+      "examples": ["application/json", "application/cloudevents+json", "application/avro", "application/protobuf"]
+    },
+    "schemaFormat": {
+      "type": "string",
+      "description": "Schema format identifier for the payload. Defaults to AsyncAPI's own subset of JSON Schema.",
+      "examples": [
+        "application/vnd.aai.asyncapi+json;version=3.0.0",
+        "application/schema+json;version=draft-07",
+        "application/vnd.apache.avro;version=1.9.0",
+        "application/vnd.google.protobuf;version=3"
+      ]
+    },
+    "headers": {
+      "type": "object",
+      "description": "Schema describing the message headers (Kafka headers, AMQP properties, MQTT user properties)."
+    },
+    "payload": {
+      "description": "Schema describing the message payload. Format determined by schemaFormat."
+    },
+    "correlationId": {
+      "type": "object",
+      "description": "Correlation ID definition — a JSONPath/runtime expression pointing to a value in the message used to correlate request and reply."
+    },
+    "tags": {
+      "type": "array",
+      "items": {"type": "object"}
+    },
+    "externalDocs": {
+      "type": "object"
+    },
+    "bindings": {
+      "type": "object",
+      "description": "Protocol-specific message bindings (kafka key, mqtt retain, amqp delivery mode, etc.).",
+      "properties": {
+        "kafka": {"type": "object"},
+        "mqtt": {"type": "object"},
+        "amqp": {"type": "object"},
+        "ws": {"type": "object"},
+        "http": {"type": "object"},
+        "jms": {"type": "object"}
+      }
+    },
+    "examples": {
+      "type": "array",
+      "description": "Array of example message values for documentation, mocking, and contract testing.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {"type": "string"},
+          "summary": {"type": "string"},
+          "headers": {"type": "object"},
+          "payload": {}
+        }
+      }
+    },
+    "traits": {
+      "type": "array",
+      "description": "List of message traits merged into the message.",
+      "items": {"type": "object"}
+    }
+  }
+}

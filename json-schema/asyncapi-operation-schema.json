@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/async-apis/refs/heads/main/json-schema/asyncapi-operation-schema.json",
+  "title": "AsyncAPI Operation",
+  "description": "An AsyncAPI 3.x Operation — describes an action (send or receive) the application performs on a referenced channel. Operations are first-class in 3.0, separated from channels.",
+  "type": "object",
+  "required": ["action", "channel"],
+  "properties": {
+    "action": {
+      "type": "string",
+      "description": "The action the application performs. `send` = the application produces messages to the channel. `receive` = the application consumes messages from the channel.",
+      "enum": ["send", "receive"]
+    },
+    "channel": {
+      "type": "object",
+      "description": "Reference Object pointing to the channel this operation targets. Typically `{ \"$ref\": \"#/channels/userSignedUp\" }`.",
+      "properties": {
+        "$ref": {"type": "string"}
+      },
+      "required": ["$ref"]
+    },
+    "title": {
+      "type": "string"
+    },
+    "summary": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "security": {
+      "type": "array",
+      "description": "Security requirements applied to this operation.",
+      "items": {"type": "object"}
+    },
+    "tags": {
+      "type": "array",
+      "items": {"type": "object"}
+    },
+    "externalDocs": {
+      "type": "object"
+    },
+    "bindings": {
+      "type": "object",
+      "description": "Protocol-specific operation bindings (kafka.groupId, mqtt.qos, amqp.expiration, etc.).",
+      "properties": {
+        "kafka": {"type": "object"},
+        "mqtt": {"type": "object"},
+        "amqp": {"type": "object"},
+        "ws": {"type": "object"},
+        "nats": {"type": "object"},
+        "http": {"type": "object"},
+        "jms": {"type": "object"},
+        "pulsar": {"type": "object"},
+        "ibmmq": {"type": "object"}
+      }
+    },
+    "traits": {
+      "type": "array",
+      "description": "List of operation traits merged into the operation (reusable fragments).",
+      "items": {"type": "object"}
+    },
+    "messages": {
+      "type": "array",
+      "description": "Subset of messages from the referenced channel that this operation handles. Each item is a Reference Object pointing into the channel's messages map.",
+      "items": {"type": "object"}
+    },
+    "reply": {
+      "type": "object",
+      "description": "Defines a request/reply pattern: the channel + messages used for the reply.",
+      "properties": {
+        "address": {"type": "object"},
+        "channel": {"type": "object"},
+        "messages": {"type": "array"}
+      }
+    }
+  }
+}

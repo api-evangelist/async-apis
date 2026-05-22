@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/async-apis/refs/heads/main/json-schema/asyncapi-document-schema.json",
+  "title": "AsyncAPI Document",
+  "description": "Root object of an AsyncAPI 3.x document describing an event-driven application.",
+  "type": "object",
+  "required": ["asyncapi", "info"],
+  "properties": {
+    "asyncapi": {
+      "type": "string",
+      "description": "Semantic version of the AsyncAPI specification this document conforms to. Major.Minor.Patch.",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+(-.+)?$",
+      "examples": ["3.0.0", "3.1.0"]
+    },
+    "id": {
+      "type": "string",
+      "format": "uri",
+      "description": "Unique identifier for the application this document describes. URN or URL form."
+    },
+    "info": {
+      "type": "object",
+      "description": "Metadata about the API: title, version, description, contact, license, tags, externalDocs.",
+      "required": ["title", "version"],
+      "properties": {
+        "title": {"type": "string"},
+        "version": {"type": "string"},
+        "description": {"type": "string"},
+        "termsOfService": {"type": "string", "format": "uri"},
+        "contact": {"type": "object"},
+        "license": {"type": "object"},
+        "tags": {"type": "array"},
+        "externalDocs": {"type": "object"}
+      }
+    },
+    "servers": {
+      "type": "object",
+      "description": "Map of server objects (keyed by short server name) describing brokers / endpoints this application connects to.",
+      "additionalProperties": {"$ref": "asyncapi-server-schema.json"}
+    },
+    "defaultContentType": {
+      "type": "string",
+      "description": "Default content type for messages defined in this document.",
+      "examples": ["application/json", "application/cloudevents+json"]
+    },
+    "channels": {
+      "type": "object",
+      "description": "Map of channel objects (keyed by channel name) representing addressable message endpoints.",
+      "additionalProperties": {"$ref": "asyncapi-channel-schema.json"}
+    },
+    "operations": {
+      "type": "object",
+      "description": "Map of operation objects (keyed by operation id) describing send/receive actions the application performs on channels. New in AsyncAPI 3.0 — operations were split out of channels.",
+      "additionalProperties": {"$ref": "asyncapi-operation-schema.json"}
+    },
+    "components": {
+      "type": "object",
+      "description": "Reusable definitions: schemas, messages, securitySchemes, serverVariables, parameters, channels, operations, replies, replyAddresses, externalDocs, tags, correlationIds, operationTraits, messageTraits, serverBindings, channelBindings, operationBindings, messageBindings.",
+      "properties": {
+        "schemas": {"type": "object"},
+        "messages": {"type": "object"},
+        "securitySchemes": {"type": "object"},
+        "serverVariables": {"type": "object"},
+        "parameters": {"type": "object"},
+        "channels": {"type": "object"},
+        "operations": {"type": "object"},
+        "replies": {"type": "object"},
+        "replyAddresses": {"type": "object"},
+        "externalDocs": {"type": "object"},
+        "tags": {"type": "object"},
+        "correlationIds": {"type": "object"},
+        "operationTraits": {"type": "object"},
+        "messageTraits": {"type": "object"},
+        "serverBindings": {"type": "object"},
+        "channelBindings": {"type": "object"},
+        "operationBindings": {"type": "object"},
+        "messageBindings": {"type": "object"}
+      }
+    }
+  }
+}

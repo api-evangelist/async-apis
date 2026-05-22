@@ -1,0 +1,136 @@
+asyncapi: 3.0.0
+info:
+  title: User Signup Service (Kafka)
+  version: 1.0.0
+  description: >-
+    Example AsyncAPI 3.0 document describing a user-signup event stream over
+    Apache Kafka. Demonstrates the channels/operations separation introduced
+    in AsyncAPI 3.0, Kafka-specific server, channel, operation, and message
+    bindings, and CloudEvents payload conventions.
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+
+defaultContentType: application/cloudevents+json
+
+servers:
+  production:
+    host: kafka.example.com:9092
+    protocol: kafka-secure
+    protocolVersion: '3.6.0'
+    description: Production Kafka cluster (TLS + SASL_SSL)
+    security:
+      - $ref: '#/components/securitySchemes/saslScram'
+    bindings:
+      kafka:
+        schemaRegistryUrl: https://schema-registry.example.com
+        schemaRegistryVendor: confluent
+
+channels:
+  userSignedUp:
+    address: user.signedup.v1
+    title: User Signed Up
+    description: Emitted once when a new user completes the signup flow.
+    messages:
+      userSignedUp:
+        $ref: '#/components/messages/UserSignedUp'
+    bindings:
+      kafka:
+        topic: user.signedup.v1
+        partitions: 12
+        replicas: 3
+        topicConfiguration:
+          cleanup.policy: [delete]
+          retention.ms: 604800000
+
+operations:
+  publishUserSignedUp:
+    action: send
+    channel:
+      $ref: '#/channels/userSignedUp'
+    summary: Publish a user signup event
+    description: >-
+      Producer-side operation. The signup service publishes one event per
+      successful signup, keyed by user id for partition affinity.
+    bindings:
+      kafka:
+        clientId:
+          type: string
+          enum: [signup-service]
+    messages:
+      - $ref: '#/channels/userSignedUp/messages/userSignedUp'
+
+  consumeUserSignedUp:
+    action: receive
+    channel:
+      $ref: '#/channels/userSignedUp'
+    summary: Consume user signup events
+    description: >-
+      Consumer-side operation used by downstream services (analytics, email,
+      CRM sync). Each consumer group reads independently.
+    bindings:
+      kafka:
+        groupId:
+          type: string
+          description: Kafka consumer group id
+        clientId:
+          type: string
+    messages:
+      - $ref: '#/channels/userSignedUp/messages/userSignedUp'
+
+components:
+  messages:
+    UserSignedUp:
+      name: UserSignedUp
+      title: User Signed Up Event
+      contentType: application/cloudevents+json
+      headers:
+        type: object
+        properties:
+          ce-id:
+            type: string
+            description: CloudEvents id header
+          ce-source:
+            type: string
+          ce-type:
+            type: string
+            const: com.example.user.signedup.v1
+          ce-time:
+            type: string
+            format: date-time
+      payload:
+        type: object
+        required: [userId, email, createdAt]
+        properties:
+          userId:
+            type: string
+            format: uuid
+          email:
+            type: string
+            format: email
+          plan:
+            type: string
+            enum: [free, pro, enterprise]
+          createdAt:
+            type: string
+            format: date-time
+      bindings:
+        kafka:
+          key:
+            type: string
+            description: Kafka record key — the user id for partition affinity
+          schemaIdLocation: header
+          schemaIdPayloadEncoding: '4'
+      examples:
+        - name: freeSignup
+          summary: A free-tier signup
+          payload:
+            userId: 6b3f1a02-9c4b-4d12-9e36-2a8b91f0a01d
+            email: alice@example.com
+            plan: free
+            createdAt: '2026-05-22T14:03:12Z'
+
+  securitySchemes:
+    saslScram:
+      type: scramSha512
+      description: SASL/SCRAM-SHA-512 over TLS

@@ -1,0 +1,149 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "asyncapi": "https://www.asyncapi.com/docs/reference/specification/v3.0.0#",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "hydra": "http://www.w3.org/ns/hydra/core#",
+    "spdx": "http://spdx.org/rdf/terms#",
+
+    "AsyncAPIDocument": {
+      "@id": "asyncapi:asyncAPIObject",
+      "@type": "@id",
+      "rdfs:label": "AsyncAPI Document",
+      "rdfs:comment": "Root object of an AsyncAPI specification describing an event-driven application."
+    },
+
+    "Channel": {
+      "@id": "asyncapi:channelObject",
+      "@type": "@id",
+      "rdfs:label": "AsyncAPI Channel",
+      "rdfs:comment": "An addressable component of the messaging system over which messages flow (Kafka topic, MQTT topic, AMQP exchange, WebSocket path, NATS subject)."
+    },
+
+    "Operation": {
+      "@id": "asyncapi:operationObject",
+      "@type": "@id",
+      "rdfs:label": "AsyncAPI Operation",
+      "rdfs:comment": "A send or receive action an application performs on a referenced channel. First-class object in AsyncAPI 3.0+."
+    },
+
+    "Message": {
+      "@id": "asyncapi:messageObject",
+      "@type": "@id",
+      "rdfs:label": "AsyncAPI Message",
+      "rdfs:comment": "The data unit flowing over a channel — headers, payload, content type, correlation id, examples."
+    },
+
+    "Server": {
+      "@id": "asyncapi:serverObject",
+      "@type": "@id",
+      "rdfs:label": "AsyncAPI Server",
+      "rdfs:comment": "A broker or endpoint the application connects to. The protocol field selects the binding namespace."
+    },
+
+    "Binding": {
+      "@id": "asyncapi:bindingsObject",
+      "@type": "@id",
+      "rdfs:label": "AsyncAPI Binding",
+      "rdfs:comment": "Protocol-specific definitions applied at the server, channel, operation, or message level (e.g. Kafka groupId, MQTT qos, AMQP routingKey)."
+    },
+
+    "Parameter": {
+      "@id": "asyncapi:parameterObject",
+      "@type": "@id",
+      "rdfs:label": "AsyncAPI Parameter",
+      "rdfs:comment": "A variable used in a channel address template (e.g. `user/{userId}/signup`)."
+    },
+
+    "MessageTrait": {
+      "@id": "asyncapi:messageTraitObject",
+      "@type": "@id",
+      "rdfs:label": "Message Trait",
+      "rdfs:comment": "Reusable message fragment merged into a Message Object via the traits array."
+    },
+
+    "OperationTrait": {
+      "@id": "asyncapi:operationTraitObject",
+      "@type": "@id",
+      "rdfs:label": "Operation Trait",
+      "rdfs:comment": "Reusable operation fragment merged into an Operation Object via the traits array."
+    },
+
+    "CorrelationId": {
+      "@id": "asyncapi:correlationIdObject",
+      "@type": "@id",
+      "rdfs:label": "Correlation ID",
+      "rdfs:comment": "Runtime expression locating the value in a message used to correlate requests with replies."
+    },
+
+    "Reply": {
+      "@id": "asyncapi:operationReplyObject",
+      "@type": "@id",
+      "rdfs:label": "Operation Reply",
+      "rdfs:comment": "Defines the reply side of a request/reply pattern: reply channel and reply messages."
+    },
+
+    "SecurityScheme": {
+      "@id": "asyncapi:securitySchemeObject",
+      "@type": "@id",
+      "rdfs:label": "Security Scheme",
+      "rdfs:comment": "Authentication mechanism (apiKey, http, oauth2, openIdConnect, SASL variants, X.509, plain, scramSha256, scramSha512, gssapi)."
+    },
+
+    "action": {
+      "@id": "asyncapi:operationObject_action",
+      "@type": "xsd:string",
+      "rdfs:label": "Action",
+      "rdfs:comment": "Operation action: `send` (application produces) or `receive` (application consumes)."
+    },
+
+    "protocol": {
+      "@id": "asyncapi:serverObject_protocol",
+      "@type": "xsd:string",
+      "rdfs:label": "Protocol",
+      "rdfs:comment": "Wire protocol: kafka, mqtt, amqp, ws, nats, sns, sqs, jms, pulsar, ibmmq, googlepubsub, http, ros2."
+    },
+
+    "address": {
+      "@id": "asyncapi:channelObject_address",
+      "@type": "xsd:string",
+      "rdfs:label": "Channel Address",
+      "rdfs:comment": "Concrete address of the channel on the server (Kafka topic name, MQTT topic filter, AMQP routing key)."
+    },
+
+    "payload": {
+      "@id": "asyncapi:messageObject_payload",
+      "rdfs:label": "Message Payload",
+      "rdfs:comment": "Schema describing the body of the message. Format determined by schemaFormat."
+    },
+
+    "headers": {
+      "@id": "asyncapi:messageObject_headers",
+      "rdfs:label": "Message Headers",
+      "rdfs:comment": "Schema describing the message headers (Kafka headers, AMQP properties, MQTT user properties)."
+    },
+
+    "contentType": {
+      "@id": "asyncapi:messageObject_contentType",
+      "@type": "xsd:string",
+      "rdfs:label": "Content Type",
+      "rdfs:comment": "MIME type of the payload (application/json, application/cloudevents+json, application/avro)."
+    },
+
+    "schemaFormat": {
+      "@id": "asyncapi:messageObject_schemaFormat",
+      "@type": "xsd:string",
+      "rdfs:label": "Schema Format",
+      "rdfs:comment": "Identifier for the payload schema format (AsyncAPI subset, JSON Schema, Avro, Protobuf)."
+    },
+
+    "specVersion": {
+      "@id": "schema:version",
+      "@type": "xsd:string",
+      "rdfs:label": "AsyncAPI Spec Version"
+    }
+  }
+}

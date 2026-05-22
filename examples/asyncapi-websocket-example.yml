@@ -1,0 +1,151 @@
+asyncapi: 3.0.0
+info:
+  title: Live Market Quotes (WebSocket)
+  version: 1.0.0
+  description: >-
+    Example AsyncAPI 3.0 document describing a WebSocket market-data feed.
+    Demonstrates the `ws` server protocol, a WebSocket channel binding
+    declaring the HTTP handshake parameters, and a subscribe/unsubscribe
+    request/reply pattern.
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+
+defaultContentType: application/json
+
+servers:
+  production:
+    host: stream.example.com
+    pathname: /v1/quotes
+    protocol: wss
+    description: Production WebSocket Secure endpoint.
+
+channels:
+  quoteStream:
+    address: /v1/quotes
+    title: Quote Stream
+    description: Live price quotes for subscribed symbols.
+    messages:
+      subscribe:
+        $ref: '#/components/messages/Subscribe'
+      unsubscribe:
+        $ref: '#/components/messages/Unsubscribe'
+      quote:
+        $ref: '#/components/messages/Quote'
+    bindings:
+      ws:
+        method: GET
+        headers:
+          type: object
+          properties:
+            Authorization:
+              type: string
+              description: 'Bearer access token'
+        query:
+          type: object
+          properties:
+            apiVersion:
+              type: string
+              enum: [v1]
+
+operations:
+  sendSubscribe:
+    action: send
+    channel:
+      $ref: '#/channels/quoteStream'
+    summary: Subscribe to one or more symbols
+    description: Client sends a subscribe message after opening the connection.
+    messages:
+      - $ref: '#/channels/quoteStream/messages/subscribe'
+    reply:
+      channel:
+        $ref: '#/channels/quoteStream'
+      messages:
+        - $ref: '#/channels/quoteStream/messages/quote'
+
+  sendUnsubscribe:
+    action: send
+    channel:
+      $ref: '#/channels/quoteStream'
+    summary: Unsubscribe from one or more symbols
+    messages:
+      - $ref: '#/channels/quoteStream/messages/unsubscribe'
+
+  receiveQuote:
+    action: receive
+    channel:
+      $ref: '#/channels/quoteStream'
+    summary: Receive streaming quote updates
+    messages:
+      - $ref: '#/channels/quoteStream/messages/quote'
+
+components:
+  messages:
+    Subscribe:
+      name: Subscribe
+      title: Subscribe Request
+      contentType: application/json
+      payload:
+        type: object
+        required: [action, symbols]
+        properties:
+          action:
+            type: string
+            const: subscribe
+          symbols:
+            type: array
+            items:
+              type: string
+              pattern: '^[A-Z]{1,5}$'
+      examples:
+        - name: techBasket
+          payload:
+            action: subscribe
+            symbols: [AAPL, GOOGL, MSFT, NVDA]
+
+    Unsubscribe:
+      name: Unsubscribe
+      title: Unsubscribe Request
+      contentType: application/json
+      payload:
+        type: object
+        required: [action, symbols]
+        properties:
+          action:
+            type: string
+            const: unsubscribe
+          symbols:
+            type: array
+            items:
+              type: string
+
+    Quote:
+      name: Quote
+      title: Quote Tick
+      contentType: application/json
+      payload:
+        type: object
+        required: [symbol, price, ts]
+        properties:
+          symbol:
+            type: string
+          price:
+            type: number
+          bid:
+            type: number
+          ask:
+            type: number
+          volume:
+            type: integer
+          ts:
+            type: string
+            format: date-time
+      examples:
+        - name: aaplTick
+          payload:
+            symbol: AAPL
+            price: 198.34
+            bid: 198.33
+            ask: 198.35
+            volume: 124
+            ts: '2026-05-22T14:03:12.412Z'

@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/async-apis/refs/heads/main/json-schema/asyncapi-channel-schema.json",
+  "title": "AsyncAPI Channel",
+  "description": "An AsyncAPI channel — an addressable component of the messaging system (a Kafka topic, MQTT topic, AMQP exchange/queue, WebSocket path, NATS subject, etc.) over which messages flow.",
+  "type": "object",
+  "properties": {
+    "address": {
+      "type": ["string", "null"],
+      "description": "Concrete address of the channel on the server. For Kafka: the topic name. For MQTT: the topic filter. For AMQP: the routing key. Null means the channel has no concrete address (used for runtime resolution)."
+    },
+    "title": {
+      "type": "string",
+      "description": "Human-readable title for the channel."
+    },
+    "summary": {
+      "type": "string",
+      "description": "Short summary of what the channel represents."
+    },
+    "description": {
+      "type": "string",
+      "description": "Long-form description. CommonMark allowed."
+    },
+    "servers": {
+      "type": "array",
+      "description": "References to the servers this channel is available on. Each item is a Reference Object pointing into #/servers.",
+      "items": {"type": "object"}
+    },
+    "messages": {
+      "type": "object",
+      "description": "Map of message objects (keyed by message id) that can flow over this channel. Each value is a Message Object or Reference.",
+      "additionalProperties": {"$ref": "asyncapi-message-schema.json"}
+    },
+    "parameters": {
+      "type": "object",
+      "description": "Map of parameter definitions used in the channel address template (e.g. `user/{userId}/signup`).",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "description": {"type": "string"},
+          "enum": {"type": "array"},
+          "default": {"type": "string"},
+          "examples": {"type": "array"},
+          "location": {"type": "string"}
+        }
+      }
+    },
+    "tags": {
+      "type": "array",
+      "description": "Tags for categorizing channels.",
+      "items": {"type": "object"}
+    },
+    "externalDocs": {
+      "type": "object",
+      "description": "External documentation pointer."
+    },
+    "bindings": {
+      "type": "object",
+      "description": "Protocol-specific channel definitions (kafka, mqtt, amqp, ws, nats, sns, sqs, http, jms, pulsar, ibmmq, googlepubsub, anypointmq, solace).",
+      "properties": {
+        "kafka": {"type": "object"},
+        "mqtt": {"type": "object"},
+        "amqp": {"type": "object"},
+        "ws": {"type": "object"},
+        "nats": {"type": "object"},
+        "sns": {"type": "object"},
+        "sqs": {"type": "object"},
+        "http": {"type": "object"},
+        "jms": {"type": "object"},
+        "pulsar": {"type": "object"},
+        "ibmmq": {"type": "object"}
+      }
+    }
+  }
+}

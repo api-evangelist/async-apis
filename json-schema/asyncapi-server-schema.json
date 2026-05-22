@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/async-apis/refs/heads/main/json-schema/asyncapi-server-schema.json",
+  "title": "AsyncAPI Server",
+  "description": "An AsyncAPI Server — describes a broker or endpoint the application connects to. The protocol field selects the binding namespace (kafka, mqtt, amqp, ws, nats, etc.).",
+  "type": "object",
+  "required": ["host", "protocol"],
+  "properties": {
+    "host": {
+      "type": "string",
+      "description": "Hostname (and optional port) of the server. Variables allowed via `{var}` template syntax.",
+      "examples": ["kafka.example.com:9092", "broker.hivemq.com:1883", "{env}.events.example.com"]
+    },
+    "pathname": {
+      "type": "string",
+      "description": "Optional path component for protocols that need it (e.g. AMQP vhost, WebSocket path)."
+    },
+    "protocol": {
+      "type": "string",
+      "description": "The protocol used. Drives which bindings are valid.",
+      "enum": [
+        "amqp", "amqps", "http", "https", "ibmmq", "jms",
+        "kafka", "kafka-secure", "anypointmq", "mqtt", "secure-mqtt",
+        "solace", "stomp", "stomps", "ws", "wss",
+        "mercure", "googlepubsub", "pulsar", "nats", "sns", "sqs", "ros2"
+      ]
+    },
+    "protocolVersion": {
+      "type": "string",
+      "description": "Version of the protocol, e.g. `0.9.1` for AMQP, `5.0` for MQTT, `3.6.0` for Kafka."
+    },
+    "title": {"type": "string"},
+    "summary": {"type": "string"},
+    "description": {"type": "string"},
+    "variables": {
+      "type": "object",
+      "description": "Map of variables used in the host/pathname template.",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "enum": {"type": "array"},
+          "default": {"type": "string"},
+          "description": {"type": "string"},
+          "examples": {"type": "array"}
+        }
+      }
+    },
+    "security": {
+      "type": "array",
+      "description": "Security requirements that apply to all operations on this server.",
+      "items": {"type": "object"}
+    },
+    "tags": {"type": "array"},
+    "externalDocs": {"type": "object"},
+    "bindings": {
+      "type": "object",
+      "description": "Protocol-specific server bindings (e.g. kafka.schemaRegistryUrl).",
+      "properties": {
+        "kafka": {"type": "object"},
+        "mqtt": {"type": "object"},
+        "amqp": {"type": "object"},
+        "ws": {"type": "object"},
+        "ibmmq": {"type": "object"}
+      }
+    }
+  }
+}
