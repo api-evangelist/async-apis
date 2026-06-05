@@ -1,141 +1,299 @@
-# AsyncAPI
+# AsyncAPI (async-apis)
 
-Topic index for the **AsyncAPI** ecosystem — the open specification, tooling, and adopter community for describing event-driven and message-driven APIs. AsyncAPI is to asynchronous APIs what OpenAPI is to synchronous REST: a machine-readable contract describing channels, operations, messages, servers, and protocol bindings.
+Topic index for the AsyncAPI ecosystem — the open specification, tooling, and adopter community for describing event-driven and message-driven APIs. AsyncAPI is to asynchronous APIs what OpenAPI is to synchronous REST: a machine-readable contract describing channels, operations, messages, servers, and protocol bindings (Kafka, MQTT, AMQP, WebSocket, NATS, SNS, SQS, JMS, Pulsar, IBM MQ, ROS 2, and more). This repo catalogs the specification versions, the canonical tooling (Studio, Parser, Modelina, Generator, CLI), validators (Spectral, Microcks, Apicurio Registry), code-first frameworks (Springwolf, FastStream, nestjs-asyncapi, AsyncAPI.NET), and real-world adopters (Adeo, HDI Global, TransferGo, Walmart, LEGO, eBay, Salesforce).
 
-**Type:** Topic Index
-**Specification:** [asyncapi.com/docs/reference/specification/latest](https://www.asyncapi.com/docs/reference/specification/latest)
-**Source:** [github.com/asyncapi/spec](https://github.com/asyncapi/spec)
-**Governance:** [AsyncAPI Project — a Series of LF Projects, LLC](https://www.linuxfoundation.org/projects)
-**Latest version:** **3.1.0** (January 2026) — adds ROS 2 bindings
-**Previous major:** **3.0.0** (December 2023) — channels/operations separation
+**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/async-apis/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/async-apis/refs/heads/main/apis.yml)
 
-## What AsyncAPI Is
+## Scope
 
-AsyncAPI is a YAML or JSON contract describing an event-driven application. The root document contains:
+- **Type:** Index
 
-- `info` — title, version, description, contact, license
-- `servers` — broker(s) the app connects to (Kafka, MQTT, AMQP, NATS, WebSocket, SNS, SQS, JMS, Pulsar, IBM MQ, Google Pub/Sub, ROS 2, HTTP)
-- `channels` — addressable message endpoints (Kafka topic, MQTT topic filter, AMQP exchange/queue, WebSocket path, NATS subject)
-- `operations` — `send` or `receive` actions the application performs on a channel (first-class in 3.0+)
-- `components` — reusable schemas, messages, security schemes, parameters, traits, bindings, correlation IDs, replies
+## Tags
 
-The 3.0 release in December 2023 broke compatibility by lifting operations out of channels and making them top-level objects — enabling cleaner reuse of channels across multiple operations and richer request/reply modelling.
+- AsyncAPI
+- Event-Driven Architecture
+- Asynchronous APIs
+- Message Brokers
+- API Specifications
+- Kafka
+- MQTT
+- AMQP
+- WebSocket
+- Linux Foundation
 
-## AsyncAPI vs OpenAPI
+## Timestamps
 
-| | OpenAPI | AsyncAPI |
-|---|---|---|
-| **Paradigm** | Request/response (HTTP) | Event-driven / message-driven |
-| **Top-level** | `paths` + `operations` | `channels` + `operations` |
-| **Addressable unit** | URL path | Channel address (topic, queue, subject) |
-| **Action vocabulary** | HTTP method (GET/POST/...) | `send` / `receive` |
-| **Servers** | One protocol (HTTP) | 14+ protocols via bindings |
-| **Status** | OpenAPI 3.1 (CNCF / OAI) | AsyncAPI 3.1 (LF) |
+- **Created:** 2026-05-22
+- **Modified:** 2026-05-22
 
-AsyncAPI deliberately reuses much of the OpenAPI design language (info, components, $ref, JSON Schema for payloads) so teams can adopt it without learning a new mental model.
+## APIs
 
-## Artifacts
+### AsyncAPI Specification
 
-### JSON Schemas
-- [asyncapi-document-schema.json](json-schema/asyncapi-document-schema.json) — Root AsyncAPI document
-- [asyncapi-channel-schema.json](json-schema/asyncapi-channel-schema.json) — Channel object
-- [asyncapi-operation-schema.json](json-schema/asyncapi-operation-schema.json) — Operation object (3.0+ top-level)
-- [asyncapi-message-schema.json](json-schema/asyncapi-message-schema.json) — Message object
-- [asyncapi-server-schema.json](json-schema/asyncapi-server-schema.json) — Server object
+The AsyncAPI Specification is an open-source machine-readable format for describing asynchronous APIs. It defines channels (the addressable message endpoints), operations (send/receive actions an application performs), messages (the payload schema), servers (the broker connection details), and bindings (protocol-specific details for Kafka, MQTT, AMQP, WebSocket, NATS, SNS, SQS, and others). Version 3.0 (December 2023) introduced a major restructuring separating operations from channels; version 3.1.0 (January 2026) added ROS 2 bindings.
 
-### JSON-LD Context
-- [async-apis-context.jsonld](json-ld/async-apis-context.jsonld) — Linked-data context mapping AsyncAPI terms
+- **Human URL:** [https://www.asyncapi.com/](https://www.asyncapi.com/)
+- **Base URL:** `https://www.asyncapi.com/`
 
-### Vocabulary
-- [async-apis-vocabulary.yml](vocabulary/async-apis-vocabulary.yml) — Normative AsyncAPI terminology (32 terms)
+#### Tags
 
-### Example Documents
-- [asyncapi-kafka-example.yml](examples/asyncapi-kafka-example.yml) — User signup event stream over Apache Kafka (kafka-secure, CloudEvents payload, schema registry)
-- [asyncapi-mqtt-example.yml](examples/asyncapi-mqtt-example.yml) — IoT thermostat telemetry over MQTT 5 (last will, parameterized channels, QoS bindings)
-- [asyncapi-websocket-example.yml](examples/asyncapi-websocket-example.yml) — Live market quotes over WebSocket (subscribe/unsubscribe with reply pattern)
+- Specification
+- Event-Driven Architecture
+- Linux Foundation
 
-## Protocol Bindings
+#### Properties
 
-AsyncAPI is protocol-neutral; bindings are versioned independently and live in [`asyncapi/bindings`](https://github.com/asyncapi/bindings):
+- [Website](https://www.asyncapi.com/)
+- [Documentation](https://www.asyncapi.com/docs)
+- [Specification](https://www.asyncapi.com/docs/reference/specification/latest)
+- [Specification Repo](https://github.com/asyncapi/spec)
+- [Releases](https://github.com/asyncapi/spec/releases)
+- [JSON Schema](https://github.com/asyncapi/spec-json-schemas) — [JSON Schema](https://json-schema.org/specification)
+- [Blog](https://www.asyncapi.com/blog)
+- [Newsroom](https://www.asyncapi.com/community/newsroom)
+- [Case Studies](https://www.asyncapi.com/casestudies)
+- [Governance](https://github.com/asyncapi/community)
+- [Slack](https://www.asyncapi.com/slack-invite)
+- [GitHub Organization](https://github.com/asyncapi)
+- [Postman Collection](collections/async-apis.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/async-apis.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
 
-| Protocol | Typical use | Server binding | Operation binding | Message binding |
-|---|---|---|---|---|
-| **Kafka** | Event streaming | schema registry url/vendor | groupId, clientId | key, schemaId* |
-| **MQTT** | IoT telemetry | clientId, lastWill, keepAlive | qos, retain | payloadFormatIndicator, contentType |
-| **AMQP 0.9.1** | Enterprise messaging (RabbitMQ) | — | expiration, priority, deliveryMode | — |
-| **WebSocket** | Browser push, live data | — | method, query, headers | — |
-| **NATS** | Lightweight pub/sub | — | queue (group) | — |
-| **SNS** | AWS fan-out | — | ordering, deduplication | — |
-| **SQS** | AWS work queues | — | redrive policy, FIFO | — |
-| **JMS** | Java enterprise | destination | priority, deliveryMode | — |
-| **Pulsar** | Event streaming | tenant, namespace | — | — |
-| **IBM MQ** | Enterprise messaging | queueManager | expiry, persistence | — |
-| **Google Pub/Sub** | GCP messaging | topic | — | orderingKey |
-| **ROS 2** | Robotics middleware (new in 3.1) | — | — | — |
-| **HTTP** | Webhooks | — | method | headers schema |
+### AsyncAPI Studio
 
-## Tooling Landscape
+AsyncAPI Studio is the official browser-based editor for visually designing AsyncAPI documents and event-driven architectures. It provides a real-time preview rendered by the AsyncAPI React component, validation via the AsyncAPI Parser, and example generation for messages.
 
-### Official AsyncAPI Org
-- **[Studio](https://studio.asyncapi.com/)** — Browser-based visual editor with live preview
-- **[Parser](https://github.com/asyncapi/parser-js)** — JS + Go validators, shared parser-api
-- **[Modelina](https://modelina.org/)** — Typed model generation in 11+ languages
-- **[Generator](https://github.com/asyncapi/generator)** — Template-driven anything generator
-- **[CLI](https://github.com/asyncapi/cli)** — `validate`, `generate`, `convert` 2.x→3.x, `bundle`, `new`
-- **[React Component](https://github.com/asyncapi/asyncapi-react)** — HTML doc rendering used by Studio
-- **[Glee](https://github.com/asyncapi/glee)** — Spec-first Node.js application framework
+- **Human URL:** [https://studio.asyncapi.com/](https://studio.asyncapi.com/)
 
-### Code-First Frameworks
-- **[Springwolf](https://www.springwolf.dev/)** — Spring Boot @KafkaListener / @RabbitListener / @JmsListener auto-gen
-- **[FastStream](https://faststream.airt.ai/)** — Python framework (Kafka, RabbitMQ, NATS, Redis Pub/Sub)
-- **[nestjs-asyncapi](https://github.com/flamewow/nestjs-asyncapi)** — NestJS decorators
-- **[AsyncAPI.NET](https://github.com/LEGO/AsyncAPI.NET)** — C#/.NET code-first
+#### Tags
 
-### Mocking / Contract Testing
-- **[Microcks](https://microcks.io/)** — CNCF Sandbox, Kubernetes-native; mocks Kafka, MQTT, AMQP, WebSocket, NATS, SNS, SQS, Google Pub/Sub, IBM MQ
-- **[Mokapi](https://mokapi.io/)** — Go-based with visual dashboard
-- **[Virtualan](https://virtualan.io/)** — Kubernetes-native
+- Editor
+- Studio
+- Tooling
 
-### Schema Registry
-- **[Apicurio Registry](https://www.apicur.io/registry/)** — Red Hat OSS; stores AsyncAPI alongside Avro, Protobuf, JSON Schema, OpenAPI
+#### Properties
 
-### Linting / Quality
-- **[Spectral](https://stoplight.io/open-source/spectral)** — AsyncAPI 2.x linting rulesets
+- [Website](https://studio.asyncapi.com/)
+- [Git Hub](https://github.com/asyncapi/studio)
+- [Documentation](https://www.asyncapi.com/tools/studio)
+- [Postman Collection](collections/async-apis.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/async-apis.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
 
-## Notable Adopters
+### AsyncAPI Parser
 
-The AsyncAPI [case studies](https://www.asyncapi.com/casestudies) page documents:
+The AsyncAPI Parser parses, validates, and provides a programmatic API over AsyncAPI documents. It is the reference implementation used by Studio, the CLI, and the Generator. Available in JavaScript and Go; a shared parser-api defines the interface.
 
-- **Adeo** (Leroy Merlin parent) — Standardised API documentation across the group
-- **HDI Global SE** — System-wide communication overview
-- **TransferGo** — Spec-as-blueprint for event-driven microservices
+- **Human URL:** [https://github.com/asyncapi/parser-js](https://github.com/asyncapi/parser-js)
 
-Public adoption beyond case studies includes Adidas, Mercado Libre, Walmart, eBay, LEGO Group, Salesforce, Raiffeisen Bank, Postman, and SAP — published in blog posts, conference talks, and GitHub orgs.
+#### Tags
 
-## Specification Version History (Selected)
+- Parser
+- Validator
+- Tooling
 
-| Version | Date | Highlights |
-|---|---|---|
-| **3.1.0** | January 2026 | ROS 2 bindings added to official spec |
-| **3.0.1** | December 2023 | Library update; no spec changes |
-| **3.0.0** | December 2023 | Major restructure — operations split from channels; Reply object; new Components types |
-| **2.6.0** | October 2022 | Last 2.x line release |
-| **2.0.0** | September 2020 | Major rewrite; modern JSON Schema |
-| **1.0.0** | August 2017 | Initial public release |
+#### Properties
 
-## Why This Matters
+- [Parser J S](https://github.com/asyncapi/parser-js)
+- [Parser Go](https://github.com/asyncapi/parser-go)
+- [Parser A P I](https://github.com/asyncapi/parser-api)
+- [N P M](https://www.npmjs.com/package/@asyncapi/parser)
+- [Postman Collection](collections/async-apis.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/async-apis.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
 
-Synchronous request/response APIs got OpenAPI and an entire industry of tooling. The asynchronous half of the modern stack — Kafka topics, MQTT telemetry, AMQP queues, WebSocket streams, NATS subjects, SNS fan-outs — was effectively undocumented until AsyncAPI. The 3.0 release brought the spec to maturity by cleanly separating channel definition (where messages live) from operation declaration (what this application does on that channel) — finally letting publishers, subscribers, and contract-test tools share one document.
+### AsyncAPI Modelina
 
-## Related API Evangelist Repos
+Modelina is the AsyncAPI library for generating typed payload models from AsyncAPI, OpenAPI, JSON Schema, and Avro documents. Supports Java, TypeScript, JavaScript, Go, C#, Rust, Python, Kotlin, Dart, PHP, and C++ output with high customization.
 
-- [`asyncapi`](https://github.com/api-evangelist/asyncapi) — Standard repo for the spec itself
-- [`events`](https://github.com/api-evangelist/events) — General event-driven topic
-- [`streaming`](https://github.com/api-evangelist/streaming) — Streaming APIs topic
-- [`websockets`](https://github.com/api-evangelist/websockets) — WebSocket protocol topic
-- [`kafka`](https://github.com/api-evangelist/kafka) — Apache Kafka topic
-- [`messaging-api`](https://github.com/api-evangelist/messaging-api) — Messaging API topic
-- [`messaging-protocol`](https://github.com/api-evangelist/messaging-protocol) — Messaging protocols topic
+- **Human URL:** [https://modelina.org/](https://modelina.org/)
+
+#### Tags
+
+- Code Generation
+- Modeling
+- Tooling
+
+#### Properties
+
+- [Website](https://modelina.org/)
+- [Git Hub](https://github.com/asyncapi/modelina)
+- [Playground](https://modelina.org/playground)
+- [Postman Collection](collections/async-apis.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/async-apis.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+
+### AsyncAPI Generator
+
+The AsyncAPI Generator takes an AsyncAPI document plus a template and generates anything — markdown docs, HTML, Node.js code, Python code, Java code, AMQP/MQTT/Kafka clients. Template registry includes html-template, markdown-template, nodejs-template, java-template, python-paho-template, ts-nats-template.
+
+- **Human URL:** [https://github.com/asyncapi/generator](https://github.com/asyncapi/generator)
+
+#### Tags
+
+- Code Generation
+- Documentation
+- Tooling
+
+#### Properties
+
+- [Git Hub](https://github.com/asyncapi/generator)
+- [N P M](https://www.npmjs.com/package/@asyncapi/generator)
+- [Templates](https://github.com/asyncapi/template-for-generator-templates)
+- [Postman Collection](collections/async-apis.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/async-apis.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+
+### AsyncAPI CLI
+
+The AsyncAPI CLI is the unified command-line interface for the AsyncAPI ecosystem. Commands include `validate`, `generate`, `optimize`, `convert` (2.x to 3.x), `new` (scaffold a spec), `bundle`, and `start studio`.
+
+- **Human URL:** [https://github.com/asyncapi/cli](https://github.com/asyncapi/cli)
+
+#### Tags
+
+- CLI
+- Tooling
+
+#### Properties
+
+- [Git Hub](https://github.com/asyncapi/cli)
+- [N P M](https://www.npmjs.com/package/@asyncapi/cli)
+- [Documentation](https://www.asyncapi.com/tools/cli)
+- [Postman Collection](collections/async-apis.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/async-apis.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+
+### AsyncAPI React Component
+
+The AsyncAPI React component renders interactive HTML documentation from an AsyncAPI document. Used by Studio, html-template, and the asyncapi-react Storybook playground. Also available as a Web Component.
+
+- **Human URL:** [https://github.com/asyncapi/asyncapi-react](https://github.com/asyncapi/asyncapi-react)
+
+#### Tags
+
+- Documentation
+- React
+- Tooling
+
+#### Properties
+
+- [Git Hub](https://github.com/asyncapi/asyncapi-react)
+- [N P M](https://www.npmjs.com/package/@asyncapi/react-component)
+- [Postman Collection](collections/async-apis.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/async-apis.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+
+### Microcks
+
+Microcks is a Kubernetes-native open-source platform for API mocking and contract testing. First-class support for AsyncAPI — it consumes AsyncAPI documents and stands up mock Kafka, MQTT, AMQP, WebSocket, NATS, SNS, SQS, Google PubSub, and IBM MQ endpoints replaying example messages from the contract.
+
+- **Human URL:** [https://microcks.io/](https://microcks.io/)
+
+#### Tags
+
+- Mocking
+- Contract Testing
+- CNCF
+- Tooling
+
+#### Properties
+
+- [Website](https://microcks.io/)
+- [Git Hub](https://github.com/microcks/microcks)
+- [Documentation](https://microcks.io/documentation/)
+- [Async A P I Support](https://microcks.io/documentation/explanations/asyncapi-support/)
+- [C N C F Sandbox](https://www.cncf.io/projects/microcks/)
+- [Postman Collection](collections/async-apis.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/async-apis.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+
+### Apicurio Registry
+
+Apicurio Registry is an open-source schema and API registry from Red Hat that stores AsyncAPI, OpenAPI, JSON Schema, Avro, Protobuf, GraphQL, and XML Schema artifacts. Integrates with Kafka, Kafka Connect, and Kafka Streams via SerDes libraries, and enforces compatibility rules on schema evolution.
+
+- **Human URL:** [https://www.apicur.io/registry/](https://www.apicur.io/registry/)
+
+#### Tags
+
+- Schema Registry
+- Registry
+- Tooling
+
+#### Properties
+
+- [Website](https://www.apicur.io/registry/)
+- [Git Hub](https://github.com/Apicurio/apicurio-registry)
+- [Documentation](https://www.apicur.io/registry/docs/)
+- [Postman Collection](collections/async-apis.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/async-apis.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+
+### Springwolf
+
+Springwolf is the code-first AsyncAPI generator for Spring Boot applications. It auto-detects @KafkaListener, @RabbitListener, @JmsListener, @SqsListener, @SnsListener, and Cloud Stream bindings and produces an AsyncAPI document plus an interactive UI at runtime.
+
+- **Human URL:** [https://www.springwolf.dev/](https://www.springwolf.dev/)
+
+#### Tags
+
+- Code-First
+- Spring Boot
+- Tooling
+
+#### Properties
+
+- [Website](https://www.springwolf.dev/)
+- [Git Hub](https://github.com/springwolf/springwolf-core)
+- [Postman Collection](collections/async-apis.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/async-apis.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+
+### FastStream
+
+FastStream is a Python framework that auto-generates AsyncAPI documentation from typed message handlers for Kafka, RabbitMQ, NATS, Redis Pub/Sub, and Confluent Kafka. Created by airtai and donated to the AsyncAPI community.
+
+- **Human URL:** [https://faststream.airt.ai/](https://faststream.airt.ai/)
+
+#### Tags
+
+- Code-First
+- Python
+- Tooling
+
+#### Properties
+
+- [Website](https://faststream.airt.ai/)
+- [Git Hub](https://github.com/airtai/faststream)
+- [Postman Collection](collections/async-apis.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/async-apis.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+
+### Glee
+
+Glee is the AsyncAPI-native application framework. It takes an AsyncAPI document as input and scaffolds a working server (Node.js) that handles the channels, validates messages against the schema, and routes them to user-supplied handler functions.
+
+- **Human URL:** [https://github.com/asyncapi/glee](https://github.com/asyncapi/glee)
+
+#### Tags
+
+- Framework
+- Application Server
+- Tooling
+
+#### Properties
+
+- [Git Hub](https://github.com/asyncapi/glee)
+- [Postman Collection](collections/async-apis.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/async-apis.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+
+## Common Properties
+
+- [Topic Index](https://github.com/api-evangelist/async-apis)
+- [JSON Schema](json-schema/asyncapi-document-schema.json) — [JSON Schema](https://json-schema.org/specification)
+- [JSON Schema](json-schema/asyncapi-channel-schema.json) — [JSON Schema](https://json-schema.org/specification)
+- [JSON Schema](json-schema/asyncapi-operation-schema.json) — [JSON Schema](https://json-schema.org/specification)
+- [JSON Schema](json-schema/asyncapi-message-schema.json) — [JSON Schema](https://json-schema.org/specification)
+- [JSON Schema](json-schema/asyncapi-server-schema.json) — [JSON Schema](https://json-schema.org/specification)
+- [JSON-LD](json-ld/async-apis-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
+- [Vocabulary](vocabulary/async-apis-vocabulary.yml)
+- [Examples](examples/asyncapi-kafka-example.yml)
+- [Examples](examples/asyncapi-mqtt-example.yml)
+- [Examples](examples/asyncapi-websocket-example.yml)
+- [Specification](https://www.asyncapi.com/docs/reference/specification/latest)
+- [Specification Repo](https://github.com/asyncapi/spec)
+- [GitHub Organization](https://github.com/asyncapi)
+- [Governance](https://github.com/asyncapi/community)
+- [Linux Foundation Project](https://www.linuxfoundation.org/projects)
 
 ## Maintainers
 
