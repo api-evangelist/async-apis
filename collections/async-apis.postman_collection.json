@@ -1,0 +1,976 @@
+{
+  "item": [
+    {
+      "id": "c85311a6-5d89-45a4-a148-5ad18d18e0ec",
+      "name": "Validate",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d505fe20-5b83-45e1-a71e-237d7473acc1",
+          "name": "Validate an AsyncAPI document",
+          "request": {
+            "name": "Validate an AsyncAPI document",
+            "description": {},
+            "url": {
+              "path": [
+                "validate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/problem+json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"asyncapi\": \"<object>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "bd302b09-5004-482d-b308-51878d67d332",
+              "name": "Document is valid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "validate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"asyncapi\": \"<object>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "921db54a-5494-46b4-9c4b-5dcadfc41b13",
+              "name": "RFC 7807 problem response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "validate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"asyncapi\": \"<object>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"https://kIMPKltfNqHalV.swmX0HgU1Z6lQlTLdByUAwvzdpbXmRkSAL\",\n  \"title\": \"string\",\n  \"status\": 2173,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d9445f2b-5ec0-4479-8de6-f8729a5702dd",
+              "name": "RFC 7807 problem response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "validate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"asyncapi\": \"<object>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"https://kIMPKltfNqHalV.swmX0HgU1Z6lQlTLdByUAwvzdpbXmRkSAL\",\n  \"title\": \"string\",\n  \"status\": 2173,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "c40195d8-5e5f-4aec-a241-017b770096f4",
+      "name": "Parse",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0349a079-53dc-4d5b-ad7d-5fdbdb65df7e",
+          "name": "Parse an AsyncAPI document",
+          "request": {
+            "name": "Parse an AsyncAPI document",
+            "description": {},
+            "url": {
+              "path": [
+                "parse"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"asyncapi\": \"<object>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "cf797152-72b5-49c8-bb09-5afc918f74d7",
+              "name": "Parsed document",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "parse"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"asyncapi\": \"<object>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"parsed\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7a5fd25b-fadc-4945-adbf-495d8a84148b",
+              "name": "RFC 7807 problem response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "parse"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"asyncapi\": \"<object>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"https://kIMPKltfNqHalV.swmX0HgU1Z6lQlTLdByUAwvzdpbXmRkSAL\",\n  \"title\": \"string\",\n  \"status\": 2173,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "393f8d00-0c0d-4823-8c02-7b204dfafcad",
+      "name": "Convert",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f0231fd3-f7c8-478c-961c-d895f4c8e6a5",
+          "name": "Convert an AsyncAPI document to another version or format",
+          "request": {
+            "name": "Convert an AsyncAPI document to another version or format",
+            "description": {},
+            "url": {
+              "path": [
+                "convert"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"asyncapi\": \"<object>\",\n  \"version\": \"<string>\",\n  \"language\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "749d6c9f-2d03-4e35-b4c0-dc074e4cdae8",
+              "name": "Converted document",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "convert"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"asyncapi\": \"<object>\",\n  \"version\": \"<string>\",\n  \"language\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"converted\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2c5b945e-334f-4786-99cf-8e897efa3b44",
+              "name": "RFC 7807 problem response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "convert"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"asyncapi\": \"<object>\",\n  \"version\": \"<string>\",\n  \"language\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"https://kIMPKltfNqHalV.swmX0HgU1Z6lQlTLdByUAwvzdpbXmRkSAL\",\n  \"title\": \"string\",\n  \"status\": 2173,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "1f2e8cc9-5ae6-414e-ab58-61e6b7683e07",
+      "name": "Generate",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "bd6624ef-9420-416e-beab-21593ead141e",
+          "name": "Generate code or documentation from an AsyncAPI document",
+          "request": {
+            "name": "Generate code or documentation from an AsyncAPI document",
+            "description": {},
+            "url": {
+              "path": [
+                "generate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/zip"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"asyncapi\": \"<object>\",\n  \"template\": \"<string>\",\n  \"parameters\": {\n    \"key_0\": 9938,\n    \"key_1\": 1980.6129552344087,\n    \"key_2\": 5779,\n    \"key_3\": \"string\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7bc7fa1e-21a9-4142-910d-a8f87333fde9",
+              "name": "Generated artifacts (zip)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "generate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/zip"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"asyncapi\": \"<object>\",\n  \"template\": \"<string>\",\n  \"parameters\": {\n    \"key_0\": 37,\n    \"key_1\": \"string\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/zip"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b9be9bb4-d5ad-4dd9-94c6-5fb3ed8a28e0",
+              "name": "RFC 7807 problem response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "generate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"asyncapi\": \"<object>\",\n  \"template\": \"<string>\",\n  \"parameters\": {\n    \"key_0\": 37,\n    \"key_1\": \"string\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"https://kIMPKltfNqHalV.swmX0HgU1Z6lQlTLdByUAwvzdpbXmRkSAL\",\n  \"title\": \"string\",\n  \"status\": 2173,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "047d0936-5ff5-4b4f-bbfa-5a863615c251",
+      "name": "Bundle",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a7e3858a-2c49-49f9-add1-4d7c9f141261",
+          "name": "Bundle multiple AsyncAPI documents",
+          "request": {
+            "name": "Bundle multiple AsyncAPI documents",
+            "description": {},
+            "url": {
+              "path": [
+                "bundle"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"asyncapis\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"base\": \"<object>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "eed03a6b-9d42-4c23-979e-4608f2e3fc6c",
+              "name": "Bundled document",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "bundle"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"asyncapis\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"base\": \"<object>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"bundled\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2eb777e6-abf3-4e2a-a752-bdba4b305750",
+              "name": "RFC 7807 problem response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "bundle"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"asyncapis\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"base\": \"<object>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"https://kIMPKltfNqHalV.swmX0HgU1Z6lQlTLdByUAwvzdpbXmRkSAL\",\n  \"title\": \"string\",\n  \"status\": 2173,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "54e53e70-77be-4dce-b2c0-f20d350eef16",
+      "name": "Diff",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8bee70e8-acb1-42f0-bc7b-9cd4d1c17fb3",
+          "name": "Diff two AsyncAPI documents",
+          "request": {
+            "name": "Diff two AsyncAPI documents",
+            "description": {},
+            "url": {
+              "path": [
+                "diff"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"asyncapis\": [\n    \"<object>\",\n    \"<object>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "317b29f3-f16b-4751-94de-8ae66948b68d",
+              "name": "Diff result",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "diff"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"asyncapis\": [\n    \"<object>\",\n    \"<object>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"diff\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "926b89b6-1d1c-4c8d-8509-742562757479",
+              "name": "RFC 7807 problem response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "diff"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"asyncapis\": [\n    \"<object>\",\n    \"<object>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"https://kIMPKltfNqHalV.swmX0HgU1Z6lQlTLdByUAwvzdpbXmRkSAL\",\n  \"title\": \"string\",\n  \"status\": 2173,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "9c16e904-2587-4a3f-a22f-20af9a744459",
+      "name": "Help",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8ed4ed1b-b29d-431d-91e6-8ad95d54bca5",
+          "name": "Retrieve command and endpoint help",
+          "request": {
+            "name": "Retrieve command and endpoint help",
+            "description": {},
+            "url": {
+              "path": [
+                "help"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9cffa63b-a236-41db-ab0d-16b268649e45",
+              "name": "Help payload",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "help"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "a57fff66-925b-4780-ba23-c5afb04fe7f0",
+    "name": "AsyncAPI Server API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The AsyncAPI Server API exposes the official AsyncAPI tooling\n(validation, parsing, conversion, code generation, bundling, diffing)\nover HTTP. It is open source under the AsyncAPI Initiative (now part of\nthe AsyncAPI CLI repository) and can be self-hosted via Docker.\n\nNote: The AsyncAPI specification itself is a documentation/specification\nstandard, not an API. This document covers the companion AsyncAPI Server\nAPI which provides the runtime HTTP surface.\n\n\nContact Support:\n Name: AsyncAPI Initiative",
+      "type": "text/plain"
+    }
+  }
+}
