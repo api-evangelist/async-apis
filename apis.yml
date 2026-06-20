@@ -12,7 +12,7 @@ description: >-
   nestjs-asyncapi, AsyncAPI.NET), and real-world adopters (Adeo, HDI Global,
   TransferGo, Walmart, LEGO, eBay, Salesforce).
 type: Index
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 tags:
 - AsyncAPI
 - Event-Driven Architecture
@@ -41,7 +41,7 @@ apis:
     WebSocket, NATS, SNS, SQS, and others). Version 3.0 (December 2023)
     introduced a major restructuring separating operations from channels;
     version 3.1.0 (January 2026) added ROS 2 bindings.
-  image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   humanURL: https://www.asyncapi.com/
   baseURL: https://www.asyncapi.com/
   tags:
