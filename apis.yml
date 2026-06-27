@@ -57,7 +57,7 @@ apis:
     url: https://www.asyncapi.com/docs/reference/specification/latest
   - type: SpecificationRepo
     url: https://github.com/asyncapi/spec
-  - type: Releases
+  - type: ReleaseNotes
     url: https://github.com/asyncapi/spec/releases
   - type: JSONSchema
     url: https://github.com/asyncapi/spec-json-schemas
