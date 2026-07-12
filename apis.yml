@@ -284,6 +284,8 @@ apis:
 
 common:
 
+- type: DomainSecurity
+  url: security/async-apis-domain-security.yml
 - type: TopicIndex
   url: https://github.com/api-evangelist/async-apis
 
