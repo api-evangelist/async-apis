@@ -284,6 +284,8 @@ apis:
 
 common:
 
+- type: AgenticAccess
+  url: agentic-access/async-apis-agentic-access.yml
 - type: DomainSecurity
   url: security/async-apis-domain-security.yml
 - type: TopicIndex
