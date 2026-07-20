@@ -1,5 +1,6 @@
 aid: async-apis
 name: AsyncAPI
+kind: topic
 description: >-
   Topic index for the AsyncAPI ecosystem — the open specification, tooling, and
   adopter community for describing event-driven and message-driven APIs. AsyncAPI
