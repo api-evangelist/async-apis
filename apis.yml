@@ -13,7 +13,18 @@ description: >-
   nestjs-asyncapi, AsyncAPI.NET), and real-world adopters (Adeo, HDI Global,
   TransferGo, Walmart, LEGO, eBay, Salesforce).
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: unknown
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Unknown
+  confidence: low
+  source: []
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/async-apis.png
 tags:
 - AsyncAPI
 - Event-Driven Architecture
@@ -34,14 +45,12 @@ specificationVersion: '0.19'
 apis:
 - name: AsyncAPI Specification
   description: >-
-    The AsyncAPI Specification is an open-source machine-readable format for
-    describing asynchronous APIs. It defines channels (the addressable
-    message endpoints), operations (send/receive actions an application
-    performs), messages (the payload schema), servers (the broker connection
-    details), and bindings (protocol-specific details for Kafka, MQTT, AMQP,
-    WebSocket, NATS, SNS, SQS, and others). Version 3.0 (December 2023)
-    introduced a major restructuring separating operations from channels;
-    version 3.1.0 (January 2026) added ROS 2 bindings.
+    The AsyncAPI Specification is an open-source machine-readable format for describing asynchronous APIs.
+    It defines channels (the addressable message endpoints), operations (send/receive actions an application
+    performs), messages (the payload schema), servers (the broker connection details), and bindings (protocol-specific
+    details for Kafka, MQTT, AMQP, WebSocket, NATS, SNS, SQS, and others). Version 3.0 (December 2023)
+    introduced a major restructuring separating operations from channels; version 3.1.0 (January 2026)
+    added ROS 2 bindings.
   image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   humanURL: https://www.asyncapi.com/
   baseURL: https://www.asyncapi.com/
@@ -74,15 +83,13 @@ apis:
     url: https://www.asyncapi.com/slack-invite
   - type: GitHubOrganization
     url: https://github.com/asyncapi
-
   - url: graphql/async-apis-graphql.md
     type: GraphQL
 - name: AsyncAPI Studio
   description: >-
-    AsyncAPI Studio is the official browser-based editor for visually
-    designing AsyncAPI documents and event-driven architectures. It provides
-    a real-time preview rendered by the AsyncAPI React component, validation
-    via the AsyncAPI Parser, and example generation for messages.
+    AsyncAPI Studio is the official browser-based editor for visually designing AsyncAPI documents and
+    event-driven architectures. It provides a real-time preview rendered by the AsyncAPI React component,
+    validation via the AsyncAPI Parser, and example generation for messages.
   humanURL: https://studio.asyncapi.com/
   properties:
   - type: Website
@@ -95,13 +102,11 @@ apis:
   - Editor
   - Studio
   - Tooling
-
 - name: AsyncAPI Parser
   description: >-
-    The AsyncAPI Parser parses, validates, and provides a programmatic API
-    over AsyncAPI documents. It is the reference implementation used by
-    Studio, the CLI, and the Generator. Available in JavaScript and Go;
-    a shared parser-api defines the interface.
+    The AsyncAPI Parser parses, validates, and provides a programmatic API over AsyncAPI documents. It
+    is the reference implementation used by Studio, the CLI, and the Generator. Available in JavaScript
+    and Go; a shared parser-api defines the interface.
   humanURL: https://github.com/asyncapi/parser-js
   properties:
   - type: ParserJS
@@ -116,13 +121,11 @@ apis:
   - Parser
   - Validator
   - Tooling
-
 - name: AsyncAPI Modelina
   description: >-
-    Modelina is the AsyncAPI library for generating typed payload models
-    from AsyncAPI, OpenAPI, JSON Schema, and Avro documents. Supports Java,
-    TypeScript, JavaScript, Go, C#, Rust, Python, Kotlin, Dart, PHP, and
-    C++ output with high customization.
+    Modelina is the AsyncAPI library for generating typed payload models from AsyncAPI, OpenAPI, JSON
+    Schema, and Avro documents. Supports Java, TypeScript, JavaScript, Go, C#, Rust, Python, Kotlin, Dart,
+    PHP, and C++ output with high customization.
   humanURL: https://modelina.org/
   properties:
   - type: Website
@@ -135,14 +138,11 @@ apis:
   - Code Generation
   - Modeling
   - Tooling
-
 - name: AsyncAPI Generator
   description: >-
-    The AsyncAPI Generator takes an AsyncAPI document plus a template and
-    generates anything — markdown docs, HTML, Node.js code, Python code,
-    Java code, AMQP/MQTT/Kafka clients. Template registry includes
-    html-template, markdown-template, nodejs-template, java-template,
-    python-paho-template, ts-nats-template.
+    The AsyncAPI Generator takes an AsyncAPI document plus a template and generates anything — markdown
+    docs, HTML, Node.js code, Python code, Java code, AMQP/MQTT/Kafka clients. Template registry includes
+    html-template, markdown-template, nodejs-template, java-template, python-paho-template, ts-nats-template.
   humanURL: https://github.com/asyncapi/generator
   properties:
   - type: GitHub
@@ -155,12 +155,11 @@ apis:
   - Code Generation
   - Documentation
   - Tooling
-
 - name: AsyncAPI CLI
   description: >-
-    The AsyncAPI CLI is the unified command-line interface for the AsyncAPI
-    ecosystem. Commands include `validate`, `generate`, `optimize`, `convert`
-    (2.x to 3.x), `new` (scaffold a spec), `bundle`, and `start studio`.
+    The AsyncAPI CLI is the unified command-line interface for the AsyncAPI ecosystem. Commands include
+    `validate`, `generate`, `optimize`, `convert` (2.x to 3.x), `new` (scaffold a spec), `bundle`, and
+    `start studio`.
   humanURL: https://github.com/asyncapi/cli
   properties:
   - type: GitHub
@@ -172,12 +171,10 @@ apis:
   tags:
   - CLI
   - Tooling
-
 - name: AsyncAPI React Component
   description: >-
-    The AsyncAPI React component renders interactive HTML documentation from
-    an AsyncAPI document. Used by Studio, html-template, and the
-    asyncapi-react Storybook playground. Also available as a Web Component.
+    The AsyncAPI React component renders interactive HTML documentation from an AsyncAPI document. Used
+    by Studio, html-template, and the asyncapi-react Storybook playground. Also available as a Web Component.
   humanURL: https://github.com/asyncapi/asyncapi-react
   properties:
   - type: GitHub
@@ -188,14 +185,11 @@ apis:
   - Documentation
   - React
   - Tooling
-
 - name: Microcks
   description: >-
-    Microcks is a Kubernetes-native open-source platform for API mocking
-    and contract testing. First-class support for AsyncAPI — it consumes
-    AsyncAPI documents and stands up mock Kafka, MQTT, AMQP, WebSocket,
-    NATS, SNS, SQS, Google PubSub, and IBM MQ endpoints replaying example
-    messages from the contract.
+    Microcks is a Kubernetes-native open-source platform for API mocking and contract testing. First-class
+    support for AsyncAPI — it consumes AsyncAPI documents and stands up mock Kafka, MQTT, AMQP, WebSocket,
+    NATS, SNS, SQS, Google PubSub, and IBM MQ endpoints replaying example messages from the contract.
   humanURL: https://microcks.io/
   properties:
   - type: Website
@@ -213,14 +207,11 @@ apis:
   - Contract Testing
   - CNCF
   - Tooling
-
 - name: Apicurio Registry
   description: >-
-    Apicurio Registry is an open-source schema and API registry from Red Hat
-    that stores AsyncAPI, OpenAPI, JSON Schema, Avro, Protobuf, GraphQL, and
-    XML Schema artifacts. Integrates with Kafka, Kafka Connect, and Kafka
-    Streams via SerDes libraries, and enforces compatibility rules on
-    schema evolution.
+    Apicurio Registry is an open-source schema and API registry from Red Hat that stores AsyncAPI, OpenAPI,
+    JSON Schema, Avro, Protobuf, GraphQL, and XML Schema artifacts. Integrates with Kafka, Kafka Connect,
+    and Kafka Streams via SerDes libraries, and enforces compatibility rules on schema evolution.
   humanURL: https://www.apicur.io/registry/
   properties:
   - type: Website
@@ -233,13 +224,11 @@ apis:
   - Schema Registry
   - Registry
   - Tooling
-
 - name: Springwolf
   description: >-
-    Springwolf is the code-first AsyncAPI generator for Spring Boot
-    applications. It auto-detects @KafkaListener, @RabbitListener,
-    @JmsListener, @SqsListener, @SnsListener, and Cloud Stream bindings
-    and produces an AsyncAPI document plus an interactive UI at runtime.
+    Springwolf is the code-first AsyncAPI generator for Spring Boot applications. It auto-detects @KafkaListener,
+    @RabbitListener, @JmsListener, @SqsListener, @SnsListener, and Cloud Stream bindings and produces
+    an AsyncAPI document plus an interactive UI at runtime.
   humanURL: https://www.springwolf.dev/
   properties:
   - type: Website
@@ -250,13 +239,11 @@ apis:
   - Code-First
   - Spring Boot
   - Tooling
-
 - name: FastStream
   description: >-
-    FastStream is a Python framework that auto-generates AsyncAPI
-    documentation from typed message handlers for Kafka, RabbitMQ, NATS,
-    Redis Pub/Sub, and Confluent Kafka. Created by airtai and donated to
-    the AsyncAPI community.
+    FastStream is a Python framework that auto-generates AsyncAPI documentation from typed message handlers
+    for Kafka, RabbitMQ, NATS, Redis Pub/Sub, and Confluent Kafka. Created by airtai and donated to the
+    AsyncAPI community.
   humanURL: https://faststream.airt.ai/
   properties:
   - type: Website
@@ -267,13 +254,11 @@ apis:
   - Code-First
   - Python
   - Tooling
-
 - name: Glee
   description: >-
-    Glee is the AsyncAPI-native application framework. It takes an
-    AsyncAPI document as input and scaffolds a working server (Node.js)
-    that handles the channels, validates messages against the schema, and
-    routes them to user-supplied handler functions.
+    Glee is the AsyncAPI-native application framework. It takes an AsyncAPI document as input and scaffolds
+    a working server (Node.js) that handles the channels, validates messages against the schema, and routes
+    them to user-supplied handler functions.
   humanURL: https://github.com/asyncapi/glee
   properties:
   - type: GitHub
@@ -282,7 +267,76 @@ apis:
   - Framework
   - Application Server
   - Tooling
-
+- aid: async-apis:async-apis-bundle-api
+  name: AsyncAPI Bundle API
+  description: The Bundle API from AsyncAPI — 1 operation(s) for bundle.
+  humanURL: https://www.asyncapi.com/
+  baseURL: https://www.asyncapi.com/
+  tags:
+  - Bundle
+  properties:
+  - type: OpenAPI
+    url: openapi/async-apis-bundle-api-openapi.yml
+- aid: async-apis:async-apis-convert-api
+  name: AsyncAPI Convert API
+  description: The Convert API from AsyncAPI — 1 operation(s) for convert.
+  humanURL: https://www.asyncapi.com/
+  baseURL: https://www.asyncapi.com/
+  tags:
+  - Convert
+  properties:
+  - type: OpenAPI
+    url: openapi/async-apis-convert-api-openapi.yml
+- aid: async-apis:async-apis-diff-api
+  name: AsyncAPI Diff API
+  description: The Diff API from AsyncAPI — 1 operation(s) for diff.
+  humanURL: https://www.asyncapi.com/
+  baseURL: https://www.asyncapi.com/
+  tags:
+  - Diff
+  properties:
+  - type: OpenAPI
+    url: openapi/async-apis-diff-api-openapi.yml
+- aid: async-apis:async-apis-generate-api
+  name: AsyncAPI Generate API
+  description: The Generate API from AsyncAPI — 1 operation(s) for generate.
+  humanURL: https://www.asyncapi.com/
+  baseURL: https://www.asyncapi.com/
+  tags:
+  - Generate
+  properties:
+  - type: OpenAPI
+    url: openapi/async-apis-generate-api-openapi.yml
+- aid: async-apis:async-apis-help-api
+  name: AsyncAPI Help API
+  description: The Help API from AsyncAPI — 1 operation(s) for help.
+  humanURL: https://www.asyncapi.com/
+  baseURL: https://www.asyncapi.com/
+  tags:
+  - Help
+  properties:
+  - type: OpenAPI
+    url: openapi/async-apis-help-api-openapi.yml
+- aid: async-apis:async-apis-parse-api
+  name: AsyncAPI Parse API
+  description: The Parse API from AsyncAPI — 1 operation(s) for parse.
+  humanURL: https://www.asyncapi.com/
+  baseURL: https://www.asyncapi.com/
+  tags:
+  - Parse
+  properties:
+  - type: OpenAPI
+    url: openapi/async-apis-parse-api-openapi.yml
+- aid: async-apis:async-apis-validate-api
+  name: AsyncAPI Validate API
+  description: The Validate API from AsyncAPI — 1 operation(s) for validate.
+  humanURL: https://www.asyncapi.com/
+  baseURL: https://www.asyncapi.com/
+  tags:
+  - Validate
+  properties:
+  - type: OpenAPI
+    url: openapi/async-apis-validate-api-openapi.yml
 common:
 
 - type: AgenticAccess
