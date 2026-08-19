@@ -1,0 +1,163 @@
+{
+  "item": [
+    {
+      "id": "94a6250a-b3c6-4457-97ad-9e38f7790ed5",
+      "name": "Diff",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "78ef34c7-b814-45c0-9469-d92939095743",
+          "name": "Diff two AsyncAPI documents",
+          "request": {
+            "name": "Diff two AsyncAPI documents",
+            "description": {},
+            "url": {
+              "path": [
+                "diff"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"asyncapis\": [\n    \"<object>\",\n    \"<object>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8c71ccc7-2e88-4a55-9256-160260c373f0",
+              "name": "Diff result",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "diff"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"asyncapis\": [\n    \"<object>\",\n    \"<object>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"diff\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "26b5ac40-8b95-4b77-a9a5-6ad58295ecb6",
+              "name": "RFC 7807 problem response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "diff"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"asyncapis\": [\n    \"<object>\",\n    \"<object>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"https://qbiHINCTVBSptj.tugCMr48j5Xh1\",\n  \"title\": \"string\",\n  \"status\": 5581,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "2dca0496-a31c-459c-8a99-53a672dbcc43",
+    "name": "AsyncAPI Server Bundle Diff API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The AsyncAPI Server API exposes the official AsyncAPI tooling\n(validation, parsing, conversion, code generation, bundling, diffing)\nover HTTP. It is open source under the AsyncAPI Initiative (now part of\nthe AsyncAPI CLI repository) and can be self-hosted via Docker.\n\nNote: The AsyncAPI specification itself is a documentation/specification\nstandard, not an API. This document covers the companion AsyncAPI Server\nAPI which provides the runtime HTTP surface.\n\n\nContact Support:\n Name: AsyncAPI Initiative",
+      "type": "text/plain"
+    }
+  }
+}

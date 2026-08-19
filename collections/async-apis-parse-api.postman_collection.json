@@ -1,0 +1,163 @@
+{
+  "item": [
+    {
+      "id": "1b64fa03-ae2f-4a01-851f-af580df6ee9c",
+      "name": "Parse",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8d6e3852-11fd-4493-8c98-dc5bf36e2216",
+          "name": "Parse an AsyncAPI document",
+          "request": {
+            "name": "Parse an AsyncAPI document",
+            "description": {},
+            "url": {
+              "path": [
+                "parse"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"asyncapi\": \"<object>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d9ca4da5-f0f2-4f1f-94a6-64dab4f8a894",
+              "name": "Parsed document",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "parse"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"asyncapi\": \"<object>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"parsed\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cf413388-0045-4697-acbe-c8af1bfefddf",
+              "name": "RFC 7807 problem response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "parse"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"asyncapi\": \"<object>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"https://bSqqRJpHGnRGGPhPkOjOwzlWZNn.eeda6m+xgPypgZKZUvTeY9sKQK41RN7bkAbKo5niWMMEE,J8669onVYzPcywy-bNBrOpt-\",\n  \"title\": \"string\",\n  \"status\": 7027,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "dba75334-ee07-48a8-a2a0-04fc33912f3d",
+    "name": "AsyncAPI Server Bundle Parse API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The AsyncAPI Server API exposes the official AsyncAPI tooling\n(validation, parsing, conversion, code generation, bundling, diffing)\nover HTTP. It is open source under the AsyncAPI Initiative (now part of\nthe AsyncAPI CLI repository) and can be self-hosted via Docker.\n\nNote: The AsyncAPI specification itself is a documentation/specification\nstandard, not an API. This document covers the companion AsyncAPI Server\nAPI which provides the runtime HTTP surface.\n\n\nContact Support:\n Name: AsyncAPI Initiative",
+      "type": "text/plain"
+    }
+  }
+}

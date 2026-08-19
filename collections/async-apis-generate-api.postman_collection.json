@@ -1,0 +1,163 @@
+{
+  "item": [
+    {
+      "id": "bc579bfa-2c60-412d-a44a-67eae0e27ada",
+      "name": "Generate",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3460b24a-05b6-4331-b782-9d064b3223bf",
+          "name": "Generate code or documentation from an AsyncAPI document",
+          "request": {
+            "name": "Generate code or documentation from an AsyncAPI document",
+            "description": {},
+            "url": {
+              "path": [
+                "generate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/zip"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"asyncapi\": \"<object>\",\n  \"template\": \"<string>\",\n  \"parameters\": {\n    \"key_0\": true,\n    \"key_1\": 3759\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5d07b594-4c51-496a-bb5c-67e9dc0463c2",
+              "name": "Generated artifacts (zip)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "generate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/zip"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"asyncapi\": \"<object>\",\n  \"template\": \"<string>\",\n  \"parameters\": {\n    \"key_0\": 7645.352172612742,\n    \"key_1\": 7390.753579032793\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/zip"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e03ea403-2730-443a-9c35-1ef94f3614d3",
+              "name": "RFC 7807 problem response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "generate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/problem+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"asyncapi\": \"<object>\",\n  \"template\": \"<string>\",\n  \"parameters\": {\n    \"key_0\": 7645.352172612742,\n    \"key_1\": 7390.753579032793\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/problem+json"
+                }
+              ],
+              "body": "{\n  \"type\": \"http://wKuWAwUUfqyxmDoLySKNHxadSx.scwhs-tmKuIQkL\",\n  \"title\": \"string\",\n  \"status\": 6341,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "442dec8d-0ef1-48d5-919b-1b2952c25a0c",
+    "name": "AsyncAPI Server Bundle Generate API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The AsyncAPI Server API exposes the official AsyncAPI tooling\n(validation, parsing, conversion, code generation, bundling, diffing)\nover HTTP. It is open source under the AsyncAPI Initiative (now part of\nthe AsyncAPI CLI repository) and can be self-hosted via Docker.\n\nNote: The AsyncAPI specification itself is a documentation/specification\nstandard, not an API. This document covers the companion AsyncAPI Server\nAPI which provides the runtime HTTP surface.\n\n\nContact Support:\n Name: AsyncAPI Initiative",
+      "type": "text/plain"
+    }
+  }
+}
