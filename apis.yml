@@ -30,6 +30,17 @@ tags:
 - Event-Driven Architecture
 - Asynchronous APIs
 - Message Brokers
+- API Specification
+- Kafka
+- MQTT
+- AMQP
+- WebSocket
+- Linux Foundation
+tags_raw:
+- AsyncAPI
+- Event-Driven Architecture
+- Asynchronous APIs
+- Message Brokers
 - API Specifications
 - Kafka
 - MQTT
