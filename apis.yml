@@ -99,8 +99,6 @@ apis:
     url: https://www.asyncapi.com/slack-invite
   - type: GitHubOrganization
     url: https://github.com/asyncapi
-  - url: graphql/async-apis-graphql.md
-    type: GraphQL
 - name: AsyncAPI Studio
   description: AsyncAPI Studio is the official browser-based editor for visually designing AsyncAPI documents
     and event-driven architectures. It provides a real-time preview rendered by the AsyncAPI React component,
