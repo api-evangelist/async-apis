@@ -12,14 +12,22 @@ description: 'Topic index for the AsyncAPI ecosystem — the open specification,
 type: Index
 deliveryModel:
   model: unknown
-  open_source: false
+  license_evidence:
+    not_product:
+    - airtai/faststream
+    - apicurio/apicurio-registry
+    - asyncapi/asyncapi-react
+    - asyncapi/cli
+    - asyncapi/generator
+  open_source: unknown
   commercial: false
   callable_host: false
   label: Delivery model not determined — needs a product licence on record
   confidence: low
   source:
   - openapi
-  generated: '2026-08-28'
+  - repository-not-product
+  generated: '2026-09-25'
   method: derived
 accessModel:
   pricing: unknown
@@ -69,7 +77,6 @@ apis:
     version 3.1.0 (January 2026) added ROS 2 bindings.
   image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   humanURL: https://www.asyncapi.com/
-  baseURL: https://www.asyncapi.com/
   tags:
   - Specification
   - Event-Driven Architecture
@@ -276,7 +283,6 @@ apis:
   name: AsyncAPI Bundle API
   description: The Bundle API from AsyncAPI — 1 operation(s) for bundle.
   humanURL: https://www.asyncapi.com/
-  baseURL: https://www.asyncapi.com/
   tags:
   - Bundle
   properties:
@@ -286,7 +292,6 @@ apis:
   name: AsyncAPI Convert API
   description: The Convert API from AsyncAPI — 1 operation(s) for convert.
   humanURL: https://www.asyncapi.com/
-  baseURL: https://www.asyncapi.com/
   tags:
   - Convert
   properties:
@@ -296,7 +301,6 @@ apis:
   name: AsyncAPI Diff API
   description: The Diff API from AsyncAPI — 1 operation(s) for diff.
   humanURL: https://www.asyncapi.com/
-  baseURL: https://www.asyncapi.com/
   tags:
   - Diff
   properties:
@@ -306,7 +310,6 @@ apis:
   name: AsyncAPI Generate API
   description: The Generate API from AsyncAPI — 1 operation(s) for generate.
   humanURL: https://www.asyncapi.com/
-  baseURL: https://www.asyncapi.com/
   tags:
   - Generate
   properties:
@@ -316,7 +319,6 @@ apis:
   name: AsyncAPI Help API
   description: The Help API from AsyncAPI — 1 operation(s) for help.
   humanURL: https://www.asyncapi.com/
-  baseURL: https://www.asyncapi.com/
   tags:
   - Help
   properties:
@@ -326,7 +328,6 @@ apis:
   name: AsyncAPI Parse API
   description: The Parse API from AsyncAPI — 1 operation(s) for parse.
   humanURL: https://www.asyncapi.com/
-  baseURL: https://www.asyncapi.com/
   tags:
   - Parse
   properties:
@@ -336,7 +337,6 @@ apis:
   name: AsyncAPI Validate API
   description: The Validate API from AsyncAPI — 1 operation(s) for validate.
   humanURL: https://www.asyncapi.com/
-  baseURL: https://www.asyncapi.com/
   tags:
   - Validate
   properties:
